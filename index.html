@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Cala — Cucaita, Boyacá</title>
+<meta name="description" content="Hotel Cala en Cucaita, Boyacá. Habitaciones confortables, Jacuzzi, Sauna y Turco. A 20 minutos de Villa de Leyva.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ━━━━━━━━━━━━ RESET & VARIABLES ━━━━━━━━━━━━ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --sand:#F5F0E8; --cream:#FBF8F3; --stone:#C9B99A; --warm:#8B7355;
+  --dark:#1A1612; --deep:#2C2318; --teal:#2A5C5A; --teal2:#3D7A77;
+  --gold:#C4984A; --white:#FFFFFF; --gray:#5a4e42;
+  --ff-h:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'Jost','Segoe UI',sans-serif;
+}
+body{font-family:var(--ff-b);background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* ━━━━━━━━━━━━ NAV ━━━━━━━━━━━━ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 2.5rem;
+  background:linear-gradient(to bottom,rgba(26,22,18,.65),transparent);
+  transition:background .4s,padding .4s;
+}
+nav.scrolled{background:rgba(26,22,18,.95)!important;backdrop-filter:blur(14px);padding:.8rem 2.5rem}
+.logo{font-family:var(--ff-h);font-size:1.5rem;font-weight:600;color:#fff;text-decoration:none;letter-spacing:.06em}
+.logo span{color:var(--gold)}
+.nav-menu{display:flex;gap:1.6rem;list-style:none;align-items:center}
+.nav-menu a{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82);text-decoration:none;transition:color .3s}
+.nav-menu a:hover{color:#fff}
+.btn-wa-nav{background:#25D366!important;color:#fff!important;padding:.38rem .9rem;border-radius:3px!important}
+.btn-wa-nav:hover{background:#1ebe59!important}
+.btn-bk-nav{background:var(--teal)!important;color:#fff!important;padding:.38rem .9rem;border-radius:3px!important}
+.btn-bk-nav:hover{background:var(--teal2)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:2px;background:#fff;display:block;transition:.3s}
+
+/* ━━━━━━━━━━━━ HERO ━━━━━━━━━━━━ */
+#hero{
+  position:relative;height:100vh;min-height:600px;
+  display:flex;align-items:flex-end;overflow:hidden;
+}
+/* DIAPOSITIVAS — background solo con degradado (sin imágenes externas) */
+/* Cuando tenga fotos: agregar background-image: antes del degradado */
+.slide{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity 1.4s ease;
+  background-size:cover;background-position:center;
+}
+.slide.on{opacity:1}
+.slide:nth-child(1){background:linear-gradient(135deg,#0f1a18 0%,#1f4e4c 40%,#2A5C5A 70%,#1A1612 100%)}
+.slide:nth-child(2){background:linear-gradient(145deg,#1A1612 0%,#3D4A2A 30%,#2C2318 60%,#8B7355 100%)}
+.slide:nth-child(3){background:linear-gradient(120deg,#2C1A0A 0%,#C4984A 45%,#2A5C5A 80%,#1A1612 100%)}
+/* Overlay */
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.65) 100%)}
+/* Contenido del hero */
+.hero-txt{
+  position:relative;z-index:2;
+  padding:0 2.5rem 5rem;max-width:660px;
+  animation:fadeUp 1s ease both;
+}
+.eyebrow{
+  font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.9rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--gold);flex-shrink:0}
+h1{
+  font-family:var(--ff-h);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;
+  color:#fff;line-height:1.06;margin-bottom:1.2rem;letter-spacing:.02em;
+}
+h1 em{font-style:italic;color:var(--stone)}
+.hero-sub{font-size:.87rem;font-weight:300;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:2.2rem;max-width:420px}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.85rem 1.8rem;font-size:.76rem;font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;text-decoration:none;
+  border:1px solid transparent;transition:transform .2s,background .3s,border-color .3s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-green{background:#25D366;border-color:#25D366;color:#fff}
+.btn-green:hover{background:#1ebe59;border-color:#1ebe59}
+.btn-outline{background:transparent;border-color:rgba(255,255,255,.45);color:#fff}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff}
+/* Dots */
+.hero-dots{position:absolute;bottom:2.2rem;right:2.5rem;z-index:2;display:flex;gap:.45rem}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .3s,transform .3s}
+.dot.on{background:var(--gold);transform:scale(1.35)}
+/* Scroll hint */
+.scroll-hint{
+  position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.35rem;
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);
+  animation:bob 2s infinite;
+}
+.scroll-hint::after{content:'';width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent)}
+
+/* ━━━━━━━━━━━━ SECTIONS COMUNES ━━━━━━━━━━━━ */
+.sec{padding:5.5rem 2.5rem}
+.tag{font-size:.67rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:.65rem;margin-bottom:.9rem}
+.tag::before{content:'';width:26px;height:1px;background:var(--teal)}
+.tag.center{justify-content:center}
+.tag.center::before{display:none}
+h2{font-family:var(--ff-h);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:300;line-height:1.1;margin-bottom:1.3rem;letter-spacing:.02em}
+h2 em{font-style:italic;color:var(--warm)}
+.body-txt{font-size:.92rem;font-weight:300;line-height:1.85;color:var(--gray);max-width:500px}
+/* Reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+/* ━━━━━━━━━━━━ SOBRE NOSOTROS ━━━━━━━━━━━━ */
+#nosotros{background:#fff;display:grid;grid-template-columns:1fr 1fr;padding:0;gap:0}
+.about-img{position:relative;overflow:hidden;min-height:500px}
+.about-img-ph{
+  width:100%;height:100%;min-height:500px;
+  background:linear-gradient(135deg,var(--teal) 0%,var(--deep) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  font-family:var(--ff-h);font-size:1rem;color:rgba(255,255,255,.35);letter-spacing:.1em;
+}
+.about-img-ph::before{content:'🏨';font-size:4rem}
+/* Cuando tenga foto: <img src="img/fachada.jpg" style="width:100%;height:100%;object-fit:cover"> */
+.about-txt{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.near-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--sand);border:1px solid rgba(139,115,85,.22);
+  padding:.42rem .85rem;font-size:.73rem;color:var(--warm);margin-top:1.5rem;width:fit-content;
+}
+.near-tag strong{color:var(--teal)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2.8rem;padding-top:2.4rem;border-top:1px solid rgba(139,115,85,.18)}
+.stat-n{font-family:var(--ff-h);font-size:2.6rem;font-weight:300;color:var(--teal);line-height:1}
+.stat-l{font-size:.68rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--warm);margin-top:.25rem}
+
+/* ━━━━━━━━━━━━ HABITACIONES ━━━━━━━━━━━━ */
+#habitaciones{background:var(--sand)}
+.hab-hdr{max-width:1180px;margin:0 auto 3rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem}
+.hab-note{font-size:.82rem;color:var(--warm);max-width:260px;line-height:1.65;font-weight:300}
+.hab-tabs{max-width:1180px;margin:0 auto 2.5rem;display:flex;gap:.4rem;flex-wrap:wrap}
+.hab-tab{font-family:var(--ff-b);font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.52rem 1.2rem;border:1px solid rgba(139,115,85,.3);background:transparent;color:var(--warm);cursor:pointer;transition:all .25s}
+.hab-tab:hover{border-color:var(--teal);color:var(--teal)}
+.hab-tab.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.hab-panel{display:none;max-width:1180px;margin:0 auto}
+.hab-panel.active{display:block}
+.hab-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.6rem}
+.hc{border-radius:2px;overflow:hidden;background:#fff;box-shadow:0 2px 16px rgba(26,22,18,.08);transition:transform .3s,box-shadow .3s}
+.hc:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(26,22,18,.14)}
+.hc-slider{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--deep)}
+.hc-slides{display:flex;height:100%;transition:transform .45s ease}
+.hc-slide{flex-shrink:0;width:100%;height:100%}
+.hc-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.hc-prev,.hc-next{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(26,22,18,.55);border:none;color:#fff;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:background .2s;backdrop-filter:blur(4px)}
+.hc-prev{left:.5rem}.hc-next{right:.5rem}
+.hc-prev:hover,.hc-next:hover{background:rgba(26,22,18,.85)}
+.hc-dots-row{position:absolute;bottom:.5rem;left:0;right:0;display:flex;justify-content:center;gap:.3rem;z-index:3}
+.hc-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;border:none;padding:0;transition:background .2s,transform .2s}
+.hc-dot.on{background:#fff;transform:scale(1.3)}
+.hc-counter{position:absolute;top:.6rem;right:.7rem;font-size:.62rem;background:rgba(26,22,18,.6);color:#fff;padding:.15rem .5rem;z-index:3;letter-spacing:.06em;backdrop-filter:blur(4px)}
+.hc-info{padding:1rem 1.2rem 1.3rem}
+.hc-name{font-family:var(--ff-h);font-size:1.15rem;font-weight:400;color:var(--dark);margin-bottom:.25rem}
+.hc-meta{font-size:.7rem;color:var(--warm);letter-spacing:.07em}
+/* responsive mobile */
+@media(max-width:600px){.hab-cards-grid{grid-template-columns:1fr}}
+
+/* ━━━━━━━━━━━━ ZONAS HÚMEDAS ━━━━━━━━━━━━ */
+#zonas{background:var(--deep);display:grid;grid-template-columns:1fr 1fr;padding:0;gap:0}
+.zonas-txt{padding:5.5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.zonas-txt h2{color:#fff}
+.zonas-txt .body-txt{color:rgba(255,255,255,.55)}
+.zonas-txt .tag{color:var(--teal2)}
+.zonas-txt .tag::before{background:var(--teal2)}
+.zonas-list{list-style:none;margin-top:2.2rem}
+.zonas-item{display:flex;align-items:center;gap:1.1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:padding-left .3s;cursor:default}
+.zonas-item:hover{padding-left:.4rem}
+.z-icon{width:42px;height:42px;border-radius:50%;background:rgba(61,122,119,.18);border:1px solid rgba(61,122,119,.35);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:background .3s}
+.zonas-item:hover .z-icon{background:rgba(61,122,119,.4)}
+.z-name{font-family:var(--ff-h);font-size:1.18rem;color:#fff}
+.z-desc{font-size:.73rem;color:rgba(255,255,255,.38);margin-top:.12rem}
+.z-price{margin-left:auto;font-size:.76rem;font-weight:500;color:var(--gold);white-space:nowrap}
+.zonas-vis{
+  position:relative;overflow:hidden;min-height:520px;
+  background:linear-gradient(160deg,#1f4e4c 0%,#0f1a18 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+/* Cuando tenga foto: <img src="img/jacuzzi.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"> */
+.circle-deco{width:220px;height:220px;border-radius:50%;border:1px solid rgba(196,152,74,.25);display:flex;align-items:center;justify-content:center;position:relative}
+.circle-deco::before{content:'';position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(196,152,74,.14)}
+.circle-deco span{font-family:var(--ff-h);font-size:2.8rem;color:rgba(255,255,255,.1);font-weight:300}
+
+/* ━━━━━━━━━━━━ GALERÍA ━━━━━━━━━━━━ */
+#galeria{background:var(--cream);padding:5.5rem 0}
+.gal-hdr{padding:0 2.5rem;margin-bottom:2.8rem}
+.gal-strip{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:0 2.5rem;scroll-snap-type:x mandatory}
+.gal-strip::-webkit-scrollbar{display:none}
+.gal-item{flex-shrink:0;width:310px;height:390px;scroll-snap-align:start;overflow:hidden;position:relative;cursor:pointer}
+.gal-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-h);font-size:.88rem;color:rgba(255,255,255,.35);transition:transform .7s ease}
+.gal-item:nth-child(1) .gal-ph{background:#1A1612}
+.gal-item:nth-child(2) .gal-ph{background:#2A5C5A}
+.gal-item:nth-child(3) .gal-ph{background:#4a3520}
+.gal-item:nth-child(4) .gal-ph{background:#1f3a38}
+.gal-item:nth-child(5) .gal-ph{background:#7a5a2a}
+.gal-item:nth-child(6) .gal-ph{background:#0f1a18}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-item:hover .gal-ph{transform:scale(1.05)}
+.gal-cap{position:absolute;bottom:0;left:0;right:0;padding:.85rem 1rem;background:linear-gradient(to top,rgba(26,22,18,.82),transparent);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);opacity:0;transition:opacity .3s}
+.gal-item:hover .gal-cap{opacity:1}
+.gal-hint{padding:.8rem 2.5rem 0;font-size:.7rem;color:var(--warm);letter-spacing:.08em;text-align:right}
+
+/* ━━━━━━━━━━━━ SERVICIOS ━━━━━━━━━━━━ */
+#servicios{background:#fff;text-align:center}
+.serv-grid{max-width:920px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.serv-item{padding:1.6rem 1rem;border:1px solid rgba(139,115,85,.13);display:flex;flex-direction:column;align-items:center;gap:.65rem;transition:border-color .3s,transform .3s}
+.serv-item:hover{border-color:var(--teal);transform:translateY(-4px)}
+.serv-ico{font-size:1.8rem}
+.serv-name{font-family:var(--ff-h);font-size:1rem;font-weight:400;color:var(--dark)}
+.serv-desc{font-size:.74rem;color:var(--warm);line-height:1.5;font-weight:300}
+
+/* ━━━━━━━━━━━━ BOOKING BANNER ━━━━━━━━━━━━ */
+#bk-banner{
+  background:linear-gradient(135deg,#003580,#0055b3);
+  padding:3rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+}
+.bk-left{display:flex;align-items:center;gap:1.3rem}
+.bk-ico{width:52px;height:52px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.bk-title{font-family:var(--ff-h);font-size:1.5rem;font-weight:300;color:#fff}
+.bk-sub{font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.2rem}
+.bk-btn{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:#003580;text-decoration:none;padding:.9rem 2rem;font-size:.76rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap;transition:transform .2s,box-shadow .2s}
+.bk-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
+/* ━━━━━━━━━━━━ CONTACTO ━━━━━━━━━━━━ */
+#contacto{background:var(--dark);display:grid;grid-template-columns:1fr 1fr;padding:0;gap:0}
+.con-info{padding:5.5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.con-info h2{color:#fff}
+.con-info .body-txt{color:rgba(255,255,255,.5);margin-bottom:2rem}
+.con-info .tag{color:var(--gold)}
+.con-info .tag::before{background:var(--gold)}
+.con-items{display:flex;flex-direction:column;gap:1rem}
+.con-item{display:flex;align-items:flex-start;gap:.9rem}
+.con-ico{width:36px;height:36px;border:1px solid rgba(196,152,74,.3);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;color:var(--gold)}
+.con-lbl{font-size:.64rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);margin-bottom:.15rem}
+.con-val{font-size:.84rem;color:rgba(255,255,255,.7);font-weight:300;line-height:1.5}
+.con-val a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .3s}
+.con-val a:hover{color:var(--gold)}
+.social-row{display:flex;gap:.8rem;margin-top:1.8rem;flex-wrap:wrap}
+.soc-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.58rem 1.1rem;font-size:.72rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;border:1px solid;transition:transform .2s,background .3s}
+.soc-btn:hover{transform:translateY(-2px)}
+.soc-wa{background:#25D366;color:#fff;border-color:#25D366}
+.soc-wa:hover{background:#1ebe59;border-color:#1ebe59}
+.soc-ig{color:#fff;border-color:rgba(255,255,255,.28)}
+.soc-ig:hover{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366);border-color:transparent}
+.soc-bk{color:#fff;border-color:rgba(255,255,255,.28)}
+.soc-bk:hover{background:#003580;border-color:#003580}
+/* Mapa placeholder — solo funciona online */
+.con-map{position:relative;overflow:hidden;min-height:500px;background:linear-gradient(135deg,#1f4e4c,#1A1612);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.con-map-note{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.con-map iframe{position:absolute;inset:0;width:100%;height:100%;border:none;filter:grayscale(30%) contrast(1.05)}
+/* el iframe solo carga online — el fallback oscuro se ve mientras tanto */
+
+/* ━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━━ */
+footer{background:#0D0B09;padding:2.8rem 2.5rem;display:flex;flex-direction:column;align-items:center;gap:1.3rem}
+.ft-logo{font-family:var(--ff-h);font-size:1.8rem;font-weight:300;color:rgba(255,255,255,.25);letter-spacing:.12em}
+.ft-logo span{color:rgba(196,152,74,.5)}
+.ft-links{display:flex;gap:1.8rem;list-style:none;flex-wrap:wrap;justify-content:center}
+.ft-links a{font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.22);text-decoration:none;transition:color .3s}
+.ft-links a:hover{color:var(--gold)}
+.ft-copy{font-size:.66rem;color:rgba(255,255,255,.13);letter-spacing:.06em;text-align:center;line-height:1.7}
+
+/* ━━━━━━━━━━━━ WHATSAPP FLOTANTE ━━━━━━━━━━━━ */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem}
+.wa-bub{background:#fff;color:var(--dark);font-size:.74rem;padding:.42rem .85rem;border-radius:16px 16px 0 16px;box-shadow:0 4px 16px rgba(0,0,0,.13);white-space:nowrap;opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s;pointer-events:none}
+.wa-float:hover .wa-bub{opacity:1;transform:translateY(0)}
+.wa-btn{width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.38);animation:pulse 2.5s infinite;transition:transform .3s,box-shadow .3s}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 26px rgba(37,211,102,.55);animation:none}
+.wa-btn svg{width:24px;height:24px;fill:#fff}
+
+/* ━━━━━━━━━━━━ KEYFRAMES ━━━━━━━━━━━━ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+@keyframes pulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,.38)}50%{box-shadow:0 4px 28px rgba(37,211,102,.62)}}
+
+/* ━━━━━━━━━━━━ RESPONSIVE ━━━━━━━━━━━━ */
+@media(max-width:860px){
+  nav{padding:1rem 1.4rem}
+  nav.scrolled{padding:.7rem 1.4rem}
+  .nav-menu{display:none}
+  .nav-menu.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(26,22,18,.97);align-items:center;justify-content:center;gap:2rem;z-index:300}
+  .nav-menu.open a{font-size:.95rem}
+  .hamburger{display:flex}
+  .hero-txt{padding:0 1.4rem 4rem}
+  .sec{padding:4rem 1.4rem}
+  #nosotros,#zonas,#contacto{grid-template-columns:1fr}
+  .about-img,.zonas-vis,.con-map{min-height:260px}
+  .about-txt,.zonas-txt,.con-info{padding:3rem 1.6rem}
+  .hab-grid{grid-template-columns:repeat(2,1fr)}
+  .serv-grid{grid-template-columns:repeat(2,1fr)}
+  .gal-item{width:240px;height:290px}
+  #bk-banner{flex-direction:column;text-align:center}
+  .bk-left{flex-direction:column;text-align:center}
+  footer{padding:2rem 1.4rem}
+}
+@media(max-width:520px){
+  .hab-grid{grid-template-columns:1fr}
+  h1{font-size:2.4rem}
+  .hero-btns{flex-direction:column}
+  .btn{justify-content:center}
+  .stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ████ NAV ████ -->
+<nav id="navbar">
+  <a href="#" class="logo">Hotel <span>Cala</span></a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#nosotros" onclick="closeMenu()">El Hotel</a></li>
+    <li><a href="#habitaciones" onclick="closeMenu()">Habitaciones</a></li>
+    <li><a href="#zonas" onclick="closeMenu()">Zonas Húmedas</a></li>
+    <li><a href="#galeria" onclick="closeMenu()">Galería</a></li>
+    <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
+    <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+    <li><a href="https://www.instagram.com/hotel_cala/" target="_blank" onclick="closeMenu()">📸 Instagram</a></li>
+    <!-- ★ REEMPLAZAR 573XXXXXXXXX con número real ej: 573151234567 ★ -->
+    <li><a href="https://wa.me/573219769496?text=Hola,%20quiero%20informaci%C3%B3n%20del%20Hotel%20Cala" target="_blank" class="btn-wa-nav" onclick="closeMenu()">💬 WhatsApp</a></li>
+    <li><a href="https://www.booking.com/hotel/co/cala.es.html" target="_blank" class="btn-bk-nav" onclick="closeMenu()">🏨 Booking</a></li>
+  </ul>
+  <button class="hamburger" id="ham" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ████ HERO ████ -->
+<section id="hero">
+  <div class="slide on"></div>
+  <div class="slide"></div>
+  <div class="slide"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-txt">
+    <p class="eyebrow">Cucaita, Boyacá · Colombia · A 20 min de Villa de Leyva</p>
+    <h1>Bienvenido a<br><em>Hotel Cala</em></h1>
+    <p class="hero-sub">Descanso, calidez y bienestar en el corazón de Boyacá.<br>Habitaciones confortables, Jacuzzi, Sauna y Turco privado.</p>
+    <div class="hero-btns">
+      <!-- ★ REEMPLAZAR NÚMERO ★ -->
+      <a href="https://wa.me/573219769496?text=Hola,%20quiero%20consultar%20disponibilidad%20en%20el%20Hotel%20Cala" target="_blank" class="btn btn-green">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.554 4.107 1.523 5.831L0 24l6.337-1.493A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 01-5.012-1.374l-.36-.214-3.727.879.939-3.619-.235-.372A9.76 9.76 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        Consultar por WhatsApp
+      </a>
+      <a href="https://www.booking.com/hotel/co/cala.es.html" target="_blank" class="btn btn-outline">🏨 Ver en Booking.com</a>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <div class="dot on" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ████ NOSOTROS ████ -->
+<section id="nosotros">
+  <div class="about-img rv">
+    <img src="img/FACHADA/fachada-1.jpg" alt="Hotel Cala Cucaita" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
+  </div>
+  <div class="about-txt rv">
+    <p class="tag">El Hotel</p>
+    <h2>Confort y naturaleza<br>en <em>Boyacá</em></h2>
+    <p class="body-txt">Hotel Cala es un establecimiento ubicado en Cucaita, Boyacá, a tan solo 20 minutos del encantador municipio de Villa de Leyva. Un espacio diseñado para el descanso con habitaciones modernas, zonas húmedas privadas y la calidez del servicio boyacense.</p>
+    <div class="near-tag">📍 A <strong>20 min</strong> de Villa de Leyva &nbsp;·&nbsp; Cerca del <strong>Puente de Boyacá</strong></div>
+    <div class="stats">
+      <div><div class="stat-n">24</div><div class="stat-l">Habitaciones</div></div>
+      <div><div class="stat-n">3</div><div class="stat-l">Zonas Húmedas</div></div>
+      <div><div class="stat-n">4</div><div class="stat-l">Pisos</div></div>
+      <div><div class="stat-n">24/7</div><div class="stat-l">Atención</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ████ HABITACIONES ████ -->
+<section id="habitaciones" class="sec" style="padding-top:5.5rem;padding-bottom:5.5rem">
+  <div class="hab-hdr rv">
+    <div>
+      <p class="tag">Habitaciones</p>
+      <h2>Donde el descanso<br><em>es protagonista</em></h2>
+    </div>
+    <p class="hab-note">5 categorías de habitaciones. Todas con baño privado, TV cable y WiFi.</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="hab-tabs rv">
+    <button class="hab-tab active" onclick="showPanel('dobles',this)">🛏 Dobles</button>
+    <button class="hab-tab" onclick="showPanel('familiares',this)">👨‍👩‍👧 Familiares</button>
+    <button class="hab-tab" onclick="showPanel('suites',this)">⭐ Junior Suite Deluxe</button>
+    <button class="hab-tab" onclick="showPanel('estandar',this)">🏨 Triple Estándar</button>
+    <button class="hab-tab" onclick="showPanel('superiores',this)">🏆 Triple Superior</button>
+  </div>
+
+  <!-- ── Panel: DOBLES ── -->
+  <div class="hab-panel active" id="panel-dobles">
+    <div class="hab-cards-grid">
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/201 Sencilla/201-sencilla1.jpeg" alt="201 Sencilla"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/201 Sencilla/201-sencilla2.jpeg" alt="201 Sencilla"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/201 Sencilla/201-sencilla3.jpeg" alt="201 Sencilla"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/201 Sencilla/201-sencilla4.jpeg" alt="201 Sencilla"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/201 Sencilla/201-sencilla5.jpeg" alt="201 Sencilla"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 5</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">201 — Sencilla</div><div class="hc-meta">Habitación Doble · 2 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/203 Doble/203-doble1.jpeg" alt="203 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/203 Doble/203-doble2.jpeg" alt="203 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/203 Doble/203-doble3.jpeg" alt="203 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/203 Doble/203-doble4.jpeg" alt="203 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/203 Doble/203-doble5.jpeg" alt="203 Doble"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 5</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">203 — Doble</div><div class="hc-meta">Habitación Doble · 2 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/204 Doble/204-doble1.jpeg" alt="204 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/204 Doble/204-doble2.jpeg" alt="204 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/204 Doble/204-doble3.jpeg" alt="204 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/204 Doble/204-doble4.jpeg" alt="204 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/204 Doble/204-doble5.jpeg" alt="204 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/204 Doble/204-doble6.jpeg" alt="204 Doble"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">204 — Doble</div><div class="hc-meta">Habitación Doble · 2 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/205 Doble/205-doble1.jpeg" alt="205 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/205 Doble/205-doble2.jpeg" alt="205 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/205 Doble/205-doble3.jpeg" alt="205 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/205 Doble/205-doble4.jpeg" alt="205 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/205 Doble/205-doble5.jpeg" alt="205 Doble"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 5</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">205 — Doble</div><div class="hc-meta">Habitación Doble · 2 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/206 Doble/206-doble1.jpeg" alt="206 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/206 Doble/206-doble2.jpeg" alt="206 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/206 Doble/206-doble3.jpeg" alt="206 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/206 Doble/206-doble4.jpeg" alt="206 Doble"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES DOBLES/206 Doble/206-doble5.jpeg" alt="206 Doble"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 5</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">206 — Doble</div><div class="hc-meta">Habitación Doble · 2 personas</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Panel: FAMILIARES ── -->
+  <div class="hab-panel" id="panel-familiares">
+    <div class="hab-cards-grid">
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/214/214-familiar1.jpeg" alt="214"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/214/214-familiar2.jpeg" alt="214"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/214/214-familiar3.jpeg" alt="214"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/214/214-familiar4.jpeg" alt="214"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/214/214-familiar5.jpeg" alt="214"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/214/214-familiar6.jpeg" alt="214"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">214 — Familiar</div><div class="hc-meta">Habitación Familiar · 4–5 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/215/215-familiar1.jpeg" alt="215"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/215/215-familiar2.jpeg" alt="215"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/215/215-familiar3.jpeg" alt="215"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/215/215-familiar4.jpeg" alt="215"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/215/215-familiar5.jpeg" alt="215"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/215/215-familiar6.jpeg" alt="215"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">215 — Familiar</div><div class="hc-meta">Habitación Familiar · 4–5 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/216/216-familiar1.jpeg" alt="216"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/216/216-familiar2.jpeg" alt="216"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/216/216-familiar3.jpeg" alt="216"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/216/216-familiar4.jpeg" alt="216"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/216/216-familiar5.jpeg" alt="216"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/216/216-familiar6.jpeg" alt="216"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">216 — Familiar</div><div class="hc-meta">Habitación Familiar · 4–5 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/217/217-familiar1.jpeg" alt="217"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/217/217-familiar2.jpeg" alt="217"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/217/217-familiar3.jpeg" alt="217"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/217/217-familiar4.jpeg" alt="217"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES FAMILIARES/217/217-familiar5.jpeg" alt="217"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 5</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">217 — Familiar</div><div class="hc-meta">Habitación Familiar · 4–5 personas</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Panel: JUNIOR SUITE DELUXE ── -->
+  <div class="hab-panel" id="panel-suites">
+    <div class="hab-cards-grid">
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit1.jpeg" alt="Suite 1"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit2.jpeg" alt="Suite 1"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit3.jpeg" alt="Suite 1"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit4.jpeg" alt="Suite 1"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit5.jpeg" alt="Suite 1"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit6.jpeg" alt="Suite 1"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit7.jpeg" alt="Suite 1"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 7</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">Suite 1 — Junior Deluxe</div><div class="hc-meta">Piso 4 · 2 personas · Vista panorámica</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit1.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit2.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit3.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit4.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit5.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit6.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit7.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit8.jpeg" alt="Suite 2"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit9.jpeg" alt="Suite 2"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 9</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">Suite 2 — Junior Deluxe</div><div class="hc-meta">Piso 4 · 2 personas · Vista panorámica</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Panel: TRIPLE ESTÁNDAR ── -->
+  <div class="hab-panel" id="panel-estandar">
+    <div class="hab-cards-grid">
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/207 Triple  con balcon/207-triple1.jpeg" alt="207"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/207 Triple  con balcon/207-triple2.jpeg" alt="207"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/207 Triple  con balcon/207-triple3.jpeg" alt="207"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/207 Triple  con balcon/207-triple4.jpeg" alt="207"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/207 Triple  con balcon/207-triple5.jpeg" alt="207"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 5</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">207 — Triple con Balcón</div><div class="hc-meta">Triple Estándar · 3 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/208 Triple sin balcon/208-triple1.jpeg" alt="208"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/208 Triple sin balcon/208-triple2.jpeg" alt="208"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/208 Triple sin balcon/208-triple3.jpeg" alt="208"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/208 Triple sin balcon/208-triple4.jpeg" alt="208"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/208 Triple sin balcon/208-triple5.jpeg" alt="208"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/208 Triple sin balcon/208-triple6.jpeg" alt="208"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">208 — Triple sin Balcón</div><div class="hc-meta">Triple Estándar · 3 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/209 Triple sin balcon/209-triple1.jpeg" alt="209"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/209 Triple sin balcon/209-triple2.jpeg" alt="209"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/209 Triple sin balcon/209-triple3.jpeg" alt="209"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/209 Triple sin balcon/209-triple4.jpeg" alt="209"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/209 Triple sin balcon/209-triple5.jpeg" alt="209"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/209 Triple sin balcon/209-triple6.jpeg" alt="209"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">209 — Triple sin Balcón</div><div class="hc-meta">Triple Estándar · 3 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/210 Triple sin balcon/210-triple1.jpeg" alt="210"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/210 Triple sin balcon/210-triple2.jpeg" alt="210"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/210 Triple sin balcon/210-triple3.jpeg" alt="210"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/210 Triple sin balcon/210-triple4.jpeg" alt="210"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/210 Triple sin balcon/210-triple5.jpeg" alt="210"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/210 Triple sin balcon/210-triple6.jpeg" alt="210"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">210 — Triple sin Balcón</div><div class="hc-meta">Triple Estándar · 3 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/211 Triple sin balcon/211-triple1.jpeg" alt="211"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/211 Triple sin balcon/211-triple2.jpeg" alt="211"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/211 Triple sin balcon/211-triple3.jpeg" alt="211"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/211 Triple sin balcon/211-triple4.jpeg" alt="211"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/211 Triple sin balcon/211-triple5.jpeg" alt="211"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/211 Triple sin balcon/211-triple6.jpeg" alt="211"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">211 — Triple sin Balcón</div><div class="hc-meta">Triple Estándar · 3 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/212 Triple sin balcon/212-triple1.jpeg" alt="212"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/212 Triple sin balcon/212-triple2.jpeg" alt="212"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/212 Triple sin balcon/212-triple3.jpeg" alt="212"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/212 Triple sin balcon/212-triple4.jpeg" alt="212"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/212 Triple sin balcon/212-triple5.jpeg" alt="212"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/212 Triple sin balcon/212-triple6.jpeg" alt="212"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">212 — Triple sin Balcón</div><div class="hc-meta">Triple Estándar · 3 personas</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/213 Triple sin balcon/213-triple1.jpeg" alt="213"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/213 Triple sin balcon/213-triple2.jpeg" alt="213"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/213 Triple sin balcon/213-triple3.jpeg" alt="213"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/213 Triple sin balcon/213-triple4.jpeg" alt="213"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/213 Triple sin balcon/213-triple5.jpeg" alt="213"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLE ESTANDAR/213 Triple sin balcon/213-triple6.jpeg" alt="213"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">213 — Triple sin Balcón</div><div class="hc-meta">Triple Estándar · 3 personas</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Panel: TRIPLES SUPERIORES ── -->
+  <div class="hab-panel" id="panel-superiores">
+    <div class="hab-cards-grid">
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama1.jpeg" alt="302"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama2.jpeg" alt="302"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama3.jpeg" alt="302"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama4.jpeg" alt="302"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama5.jpeg" alt="302"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama6.jpeg" alt="302"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama7.jpeg" alt="302"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama8.jpeg" alt="302"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 8</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">302 — 1 Cama con Sofacama</div><div class="hc-meta">Triple Superior · 3 personas · Piso 3</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior1.jpeg" alt="303"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior2.jpeg" alt="303"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior3.jpeg" alt="303"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior4.jpeg" alt="303"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior5.jpeg" alt="303"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior6.jpeg" alt="303"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior7.jpeg" alt="303"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/303/303-superior8.jpeg" alt="303"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 8</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">303 — Superior</div><div class="hc-meta">Triple Superior · 3 personas · Piso 3</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/304 1 CAMA CON SOFACAMA/304-sofacama1.jpeg" alt="304"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/304 1 CAMA CON SOFACAMA/304-sofacama2.jpeg" alt="304"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/304 1 CAMA CON SOFACAMA/304-sofacama3.jpeg" alt="304"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/304 1 CAMA CON SOFACAMA/304-sofacama4.jpeg" alt="304"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/304 1 CAMA CON SOFACAMA/304-sofacama5.jpeg" alt="304"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/304 1 CAMA CON SOFACAMA/304-sofacama6.jpeg" alt="304"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 6</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">304 — 1 Cama con Sofacama</div><div class="hc-meta">Triple Superior · 3 personas · Piso 3</div></div>
+      </div>
+
+      <div class="hc rv">
+        <div class="hc-slider">
+          <div class="hc-slides">
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/305/305-superior1.jpeg" alt="305"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/305/305-superior2.jpeg" alt="305"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/305/305-superior3.jpeg" alt="305"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/305/305-superior4.jpeg" alt="305"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/305/305-superior5.jpeg" alt="305"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/305/305-superior6.jpeg" alt="305"></div>
+            <div class="hc-slide"><img src="img/HABITACIONES TRIPLES SUPERIORES/305/305-superior7.jpeg" alt="305"></div>
+          </div>
+          <button class="hc-prev" onclick="moveSlide(this,-1)">&#8249;</button>
+          <button class="hc-next" onclick="moveSlide(this,1)">&#8250;</button>
+          <div class="hc-counter">1 / 7</div>
+          <div class="hc-dots-row"></div>
+        </div>
+        <div class="hc-info"><div class="hc-name">305 — Superior</div><div class="hc-meta">Triple Superior · 3 personas · Piso 3</div></div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ████ ZONAS HÚMEDAS ████ -->
+<section id="zonas">
+  <div class="zonas-txt rv">
+    <p class="tag">Zonas Húmedas</p>
+    <h2>Relax y <em>bienestar</em><br>en cada turno</h2>
+    <p class="body-txt">Disfrute de nuestras instalaciones privadas de spa. Jacuzzi, sauna seco y turco de vapor disponibles por turnos para una experiencia exclusiva en Boyacá.</p>
+    <ul class="zonas-list">
+      <li class="zonas-item"><div class="z-icon">🛁</div><div><div class="z-name">Jacuzzi</div><div class="z-desc">Hidromasaje relajante · Máx. 6 personas</div></div></li>
+      <li class="zonas-item"><div class="z-icon">🌡️</div><div><div class="z-name">Sauna Seco</div><div class="z-desc">Calor profundo · Sesión de 45 min</div></div></li>
+      <li class="zonas-item"><div class="z-icon">💨</div><div><div class="z-name">Turco</div><div class="z-desc">Vapor húmedo · Sesión de 45 min</div></div></li>
+    </ul>
+  </div>
+  <div class="zonas-vis">
+    <img src="img/ZONAS HUMEDAS/jacuzzi-1.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55">
+    <div class="circle-deco"><span>Spa</span></div>
+  </div>
+</section>
+
+<!-- ████ GALERÍA ████ -->
+<section id="galeria">
+  <div class="gal-hdr rv">
+    <p class="tag">Galería</p>
+    <h2>Cada rincón,<br><em>una experiencia</em></h2>
+  </div>
+  <div class="gal-strip">
+    <!-- Entorno: rota automático -->
+    <div class="gal-item" id="gal-entorno">
+      <img id="gal-entorno-img" src="img/ENTORNO/ENTORNO1.jpg" alt="Entorno" style="width:100%;height:100%;object-fit:cover;transition:opacity .8s ease">
+      <div class="gal-cap" id="gal-entorno-cap">Entorno · Cucaita, Boyacá</div>
+    </div>
+    <!-- Habitación: foto al azar rotando -->
+    <div class="gal-item" id="gal-hab">
+      <img id="gal-hab-img" src="img/HABITACIONES DOBLES/203 Doble/203-doble1.jpeg" alt="Habitación" style="width:100%;height:100%;object-fit:cover;transition:opacity .8s ease">
+      <div class="gal-cap">Habitaciones</div>
+    </div>
+    <!-- Fachada -->
+    <div class="gal-item">
+      <img src="img/FACHADA/fachada-1.jpg" alt="Fachada Hotel Cala" style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease">
+      <div class="gal-cap">Fachada · Hotel Cala</div>
+    </div>
+    <!-- Lobby -->
+    <div class="gal-item">
+      <img src="img/LOBBY/lobby-1.jpg" alt="Lobby Hotel Cala" style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease">
+      <div class="gal-cap">Lobby · Hotel Cala</div>
+    </div>
+    <!-- Zonas Húmedas: rota automático -->
+    <div class="gal-item" id="gal-zonas">
+      <img id="gal-zonas-img" src="img/ZONAS HUMEDAS/jacuzzi-1.jpg" alt="Zonas Húmedas" style="width:100%;height:100%;object-fit:cover;transition:opacity .8s ease">
+      <div class="gal-cap" id="gal-zonas-cap">Jacuzzi · Zonas Húmedas</div>
+    </div>
+    <!-- Zonas Comunes: rota automático -->
+    <div class="gal-item" id="gal-comunes">
+      <img id="gal-comunes-img" src="img/ZONAS COMUNES/zonascomunes-1.jpeg" alt="Zonas Comunes" style="width:100%;height:100%;object-fit:cover;transition:opacity .8s ease">
+      <div class="gal-cap" id="gal-comunes-cap">Zonas Comunes</div>
+    </div>
+    <!-- Salón de Eventos: rota automático -->
+    <div class="gal-item" id="gal-salon">
+      <img id="gal-salon-img" src="img/SALON DE EVENTOS/salon de eventos -1.png" alt="Salón de Eventos" style="width:100%;height:100%;object-fit:cover;transition:opacity .8s ease">
+      <div class="gal-cap" id="gal-salon-cap">Salón de Eventos</div>
+    </div>
+    <!-- Foto Hotel -->
+    <div class="gal-item">
+      <img src="img/FOTO HOTEL/fotohotel-1.jpg" alt="Hotel Cala" style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease">
+      <div class="gal-cap">Hotel Cala · Cucaita</div>
+    </div>
+  </div>
+  <p class="gal-hint">Deslice para ver más →</p>
+</section>
+
+<!-- ████ SERVICIOS ████ -->
+<section id="servicios" class="sec" style="text-align:center">
+  <div class="rv">
+    <p class="tag center">Servicios</p>
+    <h2 style="margin:0 auto">Todo lo que<br><em>necesita</em></h2>
+  </div>
+  <div class="serv-grid">
+    <div class="serv-item rv"><div class="serv-ico">📶</div><div class="serv-name">WiFi Gratis</div><div class="serv-desc">Internet de alta velocidad en todas las áreas</div></div>
+    <div class="serv-item rv"><div class="serv-ico">🚗</div><div class="serv-name">Parqueadero</div><div class="serv-desc">Estacionamiento privado y seguro</div></div>
+    <div class="serv-item rv"><div class="serv-ico">🍳</div><div class="serv-name">Desayuno</div><div class="serv-desc">Disponible bajo solicitud previa</div></div>
+    <div class="serv-item rv"><div class="serv-ico">🐾</div><div class="serv-name">Pet Friendly</div><div class="serv-desc">Se aceptan mascotas (consultar)</div></div>
+    <div class="serv-item rv"><div class="serv-ico">🔒</div><div class="serv-name">Seguridad 24/7</div><div class="serv-desc">Recepción y vigilancia permanente</div></div>
+    <div class="serv-item rv"><div class="serv-ico">🛁</div><div class="serv-name">Zonas Húmedas</div><div class="serv-desc">Jacuzzi, Sauna y Turco por turnos</div></div>
+    <div class="serv-item rv"><div class="serv-ico">📺</div><div class="serv-name">TV Cable</div><div class="serv-desc">Televisión por cable en cada habitación</div></div>
+    <div class="serv-item rv"><div class="serv-ico">❄️</div><div class="serv-name">Agua Caliente</div><div class="serv-desc">Disponible las 24 horas del día</div></div>
+  </div>
+</section>
+
+<!-- ████ BOOKING BANNER ████ -->
+<div id="bk-banner">
+  <div class="bk-left">
+    <div class="bk-ico">🏨</div>
+    <div>
+      <div class="bk-title">Disponible en Booking.com</div>
+      <div class="bk-sub">Consulte disponibilidad y tarifas en tiempo real · Reseñas verificadas de huéspedes</div>
+    </div>
+  </div>
+  <a href="https://www.booking.com/hotel/co/cala.es.html" target="_blank" class="bk-btn">⭐ Ver en Booking.com</a>
+</div>
+
+<!-- ████ CONTACTO ████ -->
+<section id="contacto">
+  <div class="con-info rv">
+    <p class="tag">Contacto</p>
+    <h2>¿Listo para <em>visitarnos</em>?</h2>
+    <p class="body-txt">Contáctenos por WhatsApp, redes sociales o encuéntrenos en Cucaita, Boyacá, a pocos minutos de Villa de Leyva.</p>
+    <div class="con-items">
+      <div class="con-item">
+        <div class="con-ico">📍</div>
+        <div>
+          <div class="con-lbl">Dirección</div>
+          <!-- ★ REEMPLAZAR con dirección exacta ★ -->
+          <div class="con-val">Cra. 5 #4-10, Cucaita, Boyacá</div>
+        </div>
+      </div>
+      <div class="con-item">
+        <div class="con-ico">📞</div>
+        <div>
+          <div class="con-lbl">WhatsApp</div>
+          <!-- ★ REEMPLAZAR NÚMERO ★ -->
+          <div class="con-val"><a href="https://wa.me/573219769496">+57 321 976 9496</a></div>
+        </div>
+      </div>
+      <div class="con-item">
+        <div class="con-ico">✉️</div>
+        <div>
+          <div class="con-lbl">Correo</div>
+          <div class="con-val"><a href="mailto:proyectocomercialyhotelerocala@gmail.com">proyectocomercialyhotelerocala@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="con-item">
+        <div class="con-ico">🕐</div>
+        <div>
+          <div class="con-lbl">Atención</div>
+          <div class="con-val">Recepción abierta las 24 horas</div>
+        </div>
+      </div>
+    </div>
+    <div class="social-row">
+      <!-- ★ REEMPLAZAR NÚMERO ★ -->
+      <a href="https://wa.me/573219769496?text=Hola,%20quiero%20informaci%C3%B3n%20del%20Hotel%20Cala" target="_blank" class="soc-btn soc-wa">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.554 4.107 1.523 5.831L0 24l6.337-1.493A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 01-5.012-1.374l-.36-.214-3.727.879.939-3.619-.235-.372A9.76 9.76 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.instagram.com/hotel_cala/" target="_blank" class="soc-btn soc-ig">📸 @hotel_cala</a>
+      <a href="https://www.booking.com/hotel/co/cala.es.html" target="_blank" class="soc-btn soc-bk">🏨 Booking</a>
+    </div>
+  </div>
+
+  <!-- MAPA: solo carga cuando la página esté en línea (GitHub Pages) -->
+  <div class="con-map">
+    <span style="font-size:2.5rem">📍</span>
+    <p class="con-map-note">Cucaita, Boyacá</p>
+    <p class="con-map-note" style="font-size:.62rem;opacity:.7">El mapa carga cuando la página esté publicada en línea</p>
+    <!-- Este iframe solo funciona online, no en archivo local -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15896.54!2d-73.565!3d5.521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a1d6f2b0e1e55%3A0xf0e0d5e9c6e9c5a0!2sCucaita%2C%20Boyac%C3%A1!5e0!3m2!1ses!2sco!4v1699999999999!5m2!1ses!2sco"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Hotel Cala Cucaita Boyacá">
+    </iframe>
+  </div>
+</section>
+
+<!-- ████ FOOTER ████ -->
+<footer>
+  <div class="ft-logo">Hotel <span>Cala</span></div>
+  <ul class="ft-links">
+    <li><a href="#nosotros">El Hotel</a></li>
+    <li><a href="#habitaciones">Habitaciones</a></li>
+    <li><a href="#zonas">Zonas Húmedas</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://www.instagram.com/hotel_cala/" target="_blank">📸 Instagram</a></li>
+    <li><a href="https://www.booking.com/hotel/co/cala.es.html" target="_blank">🏨 Booking</a></li>
+  </ul>
+  <p class="ft-copy">
+    © 2025 Hotel Cala · Cucaita, Boyacá, Colombia · Todos los derechos reservados<br>
+    Diseñado por Ing. Yeisson Fabian Borda Morales
+  </p>
+</footer>
+
+<!-- ████ BOTÓN FLOTANTE WHATSAPP ████ -->
+<div class="wa-float">
+  <div class="wa-bub">¡Hola! ¿En qué le ayudamos? 👋</div>
+  <!-- ★ REEMPLAZAR NÚMERO ★ -->
+  <a href="https://wa.me/573219769496?text=Hola,%20quiero%20informaci%C3%B3n%20del%20Hotel%20Cala%20en%20Cucaita" target="_blank" class="wa-btn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.554 4.107 1.523 5.831L0 24l6.337-1.493A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 01-5.012-1.374l-.36-.214-3.727.879.939-3.619-.235-.372A9.76 9.76 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+  </a>
+</div>
+
+<script>
+// ── Nav scroll ──────────────────────────────────
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+
+// ── Hamburger ───────────────────────────────────
+function toggleMenu(){ document.getElementById('navMenu').classList.toggle('open'); }
+function closeMenu(){ document.getElementById('navMenu').classList.remove('open'); }
+
+// ── Hero slider ─────────────────────────────────
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.dot');
+function goSlide(n){
+  slides[cur].classList.remove('on'); dots[cur].classList.remove('on');
+  cur = n;
+  slides[cur].classList.add('on'); dots[cur].classList.add('on');
+}
+setInterval(()=> goSlide((cur+1) % slides.length), 5000);
+
+// ── Tabs de habitaciones ─────────────────────────
+function showPanel(id, btn){
+  document.querySelectorAll('.hab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.hab-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Sliders de habitaciones ──────────────────────
+function moveSlide(btn, dir){
+  const slider = btn.closest('.hc-slider');
+  const track  = slider.querySelector('.hc-slides');
+  const total  = track.children.length;
+  let cur = parseInt(track.dataset.cur || 0);
+  cur = (cur + dir + total) % total;
+  track.dataset.cur = cur;
+  track.style.transform = `translateX(-${cur * 100}%)`;
+  slider.querySelector('.hc-counter').textContent = `${cur+1} / ${total}`;
+  slider.querySelectorAll('.hc-dot').forEach((d,i) => d.classList.toggle('on', i===cur));
+}
+
+// Inicializar dots en cada slider
+document.querySelectorAll('.hc-slider').forEach(slider => {
+  const total = slider.querySelector('.hc-slides').children.length;
+  const dotsRow = slider.querySelector('.hc-dots-row');
+  for(let i=0;i<total;i++){
+    const d = document.createElement('button');
+    d.className = 'hc-dot' + (i===0?' on':'');
+    d.setAttribute('aria-label','Foto '+(i+1));
+    d.onclick = () => {
+      const track = slider.querySelector('.hc-slides');
+      track.dataset.cur = i;
+      track.style.transform = `translateX(-${i*100}%)`;
+      slider.querySelector('.hc-counter').textContent = `${i+1} / ${total}`;
+      slider.querySelectorAll('.hc-dot').forEach((dd,ii) => dd.classList.toggle('on',ii===i));
+    };
+    dotsRow.appendChild(d);
+  }
+});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('in'), i * 90);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// ── Auto-play sliders de habitaciones ───────────
+document.querySelectorAll('.hc-slider').forEach(slider => {
+  setInterval(() => {
+    const track = slider.querySelector('.hc-slides');
+    const total = track.children.length;
+    let cur = parseInt(track.dataset.cur || 0);
+    cur = (cur + 1) % total;
+    track.dataset.cur = cur;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    slider.querySelector('.hc-counter').textContent = `${cur+1} / ${total}`;
+    slider.querySelectorAll('.hc-dot').forEach((d,i) => d.classList.toggle('on', i===cur));
+  }, 3000);
+});
+
+// ── Galería: Entorno rotando ─────────────────────
+const entornoFotos = [
+  {src:'img/ENTORNO/ENTORNO1.jpg', cap:'Entorno · Cucaita, Boyacá'},
+  {src:'img/ENTORNO/ENTORNO2.jpg', cap:'Paisaje · Boyacá'},
+  {src:'img/ENTORNO/ENTORNO3.jpeg', cap:'Naturaleza · Cucaita'},
+  {src:'img/ENTORNO/ENTORNO4.jpg', cap:'Cerca de Villa de Leyva'},
+];
+let entornoCur = 0;
+setInterval(() => {
+  const img = document.getElementById('gal-entorno-img');
+  const cap = document.getElementById('gal-entorno-cap');
+  if(!img) return;
+  img.style.opacity = '0';
+  setTimeout(() => {
+    entornoCur = (entornoCur + 1) % entornoFotos.length;
+    img.src = entornoFotos[entornoCur].src;
+    cap.textContent = entornoFotos[entornoCur].cap;
+    img.style.opacity = '1';
+  }, 400);
+}, 3500);
+
+// ── Galería: Zonas Húmedas rotando ──────────────
+const zonasHumedasFotos = [
+  {src:'img/ZONAS HUMEDAS/jacuzzi-1.jpg', cap:'Jacuzzi · Zonas Húmedas'},
+  {src:'img/ZONAS HUMEDAS/jacuzzi-2.jpg', cap:'Jacuzzi · Relax'},
+  {src:'img/ZONAS HUMEDAS/sauna-1.jpg',   cap:'Sauna · Bienestar'},
+];
+let zonasHCur = 0;
+setInterval(() => {
+  const img = document.getElementById('gal-zonas-img');
+  const cap = document.getElementById('gal-zonas-cap');
+  if(!img) return;
+  img.style.opacity = '0';
+  setTimeout(() => {
+    zonasHCur = (zonasHCur + 1) % zonasHumedasFotos.length;
+    img.src = zonasHumedasFotos[zonasHCur].src;
+    cap.textContent = zonasHumedasFotos[zonasHCur].cap;
+    img.style.opacity = '1';
+  }, 400);
+}, 4000);
+
+// ── Galería: Salón de Eventos rotando ───────────
+const salonFotos = [
+  {src:'img/SALON DE EVENTOS/salon de eventos -1.png', cap:'Salón de Eventos'},
+  {src:'img/SALON DE EVENTOS/salon de eventos -2.png', cap:'Salón de Eventos'},
+  {src:'img/SALON DE EVENTOS/salon de eventos -3.png', cap:'Salón de Eventos'},
+];
+let salonCur = 0;
+setInterval(() => {
+  const img = document.getElementById('gal-salon-img');
+  const cap = document.getElementById('gal-salon-cap');
+  if(!img) return;
+  img.style.opacity = '0';
+  setTimeout(() => {
+    salonCur = (salonCur + 1) % salonFotos.length;
+    img.src = salonFotos[salonCur].src;
+    cap.textContent = salonFotos[salonCur].cap;
+    img.style.opacity = '1';
+  }, 400);
+}, 3800);
+const zonesComunesFotos = [
+  {src:'img/ZONAS COMUNES/zonascomunes-1.jpeg', cap:'Zonas Comunes'},
+  {src:'img/ZONAS COMUNES/zonascomunes-2.jpeg', cap:'Áreas Comunes'},
+  {src:'img/ZONAS COMUNES/zonascomunes-3.jpeg', cap:'Espacios del Hotel'},
+  {src:'img/ZONAS COMUNES/zonascomunes-4.jpeg', cap:'Hotel Cala · Cucaita'},
+];
+let zonesCCur = 0;
+setInterval(() => {
+  const img = document.getElementById('gal-comunes-img');
+  const cap = document.getElementById('gal-comunes-cap');
+  if(!img) return;
+  img.style.opacity = '0';
+  setTimeout(() => {
+    zonesCCur = (zonesCCur + 1) % zonesComunesFotos.length;
+    img.src = zonesComunesFotos[zonesCCur].src;
+    cap.textContent = zonesComunesFotos[zonesCCur].cap;
+    img.style.opacity = '1';
+  }, 400);
+}, 4500);
+const habFotos = [
+  'img/HABITACIONES DOBLES/201 Sencilla/201-sencilla1.jpeg',
+  'img/HABITACIONES DOBLES/203 Doble/203-doble1.jpeg',
+  'img/HABITACIONES DOBLES/205 Doble/205-doble2.jpeg',
+  'img/HABITACIONES FAMILIARES/214/214-familiar1.jpeg',
+  'img/HABITACIONES FAMILIARES/215/215-familiar1.jpeg',
+  'img/HABITACIONES FAMILIARES/216/216-familiar3.jpeg',
+  'img/HABITACIONES FAMILIARES/217/217-familiar2.jpeg',
+  'img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 1/1-suit1.jpeg',
+  'img/HABITACIONES JUNIOR SUITE DELUXE/SUITE 2/2-suit3.jpeg',
+  'img/HABITACIONES TRIPLE ESTANDAR/207 Triple  con balcon/207-triple2.jpeg',
+  'img/HABITACIONES TRIPLE ESTANDAR/210 Triple sin balcon/210-triple1.jpeg',
+  'img/HABITACIONES TRIPLE ESTANDAR/212 Triple sin balcon/212-triple3.jpeg',
+  'img/HABITACIONES TRIPLES SUPERIORES/302 1 CAMA CON SOFACAMA/302-sofacama2.jpeg',
+  'img/HABITACIONES TRIPLES SUPERIORES/303/303-superior1.jpeg',
+  'img/HABITACIONES TRIPLES SUPERIORES/305/305-superior4.jpeg',
+];
+// Mezclar al azar
+habFotos.sort(() => Math.random() - 0.5);
+let habGalCur = 0;
+setInterval(() => {
+  const img = document.getElementById('gal-hab-img');
+  if(!img) return;
+  img.style.opacity = '0';
+  setTimeout(() => {
+    habGalCur = (habGalCur + 1) % habFotos.length;
+    img.src = habFotos[habGalCur];
+    img.style.opacity = '1';
+  }, 400);
+}, 4000);
+</script>
+</body>
+</html>
